@@ -24,8 +24,37 @@ nums2 = [2,5,6],       n = 3
 方法一：合并数组，排序
 
 方法二：双指针指针，同时比对大小
-p1 指向num1[-1-len(nums2)]
-p2指向num2[-1]
-当p2
+p1 指向num1[m-1]
+p2指向num2[n-1]
+
+p 指向 nums1[-1]
+
+
+error 1 [0] [1] ,数组越界。修改left定义，以及去掉left-=1
+        #left -= 1  错误的操作
+
 """
-__author__ = 'me'
+
+
+
+nums1 = [0]
+m =0
+nums2 =[3]
+n=1
+
+p1 = m - 1
+p2 = n - 1
+
+p = m + n -1
+while p1 >= 0 and p2 >=0:
+    if nums1[p1] < nums2[p2]:
+        #取出nums2数组里的一个数插入nums1
+        nums1[p] = nums2[p2]
+        p2 -= 1
+    else:
+        nums1[p] = nums1[p1]
+        p1 -= 1
+    p -= 1
+
+nums1[:p2 + 1] = nums2[:p2 + 1]
+print(nums1)
